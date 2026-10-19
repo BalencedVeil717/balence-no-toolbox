@@ -16,8 +16,20 @@ namespace BalenceNoToolbox;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private Todos todos;
     public MainWindow()
     {
         InitializeComponent();
+        todos = new Todos();
+        DataContext = todos;
+    }
+
+    private void AddTodoButton_Clicked(object sender, RoutedEventArgs e)
+    {
+        Todo todo = new Todo()
+        {
+            Title = NewTodoTextBox.Text
+        };
+        todos.AllTodos.Add(todo);
     }
 }
